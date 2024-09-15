@@ -11,6 +11,9 @@
   background-color: $bgColor;
   font-family: "vazir";
 }
+body {
+  overflow: hidden;
+}
 
 li {
   list-style: none;

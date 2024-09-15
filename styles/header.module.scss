@@ -30,9 +30,10 @@
   font-size: 2.2rem;
 }
 .header__login {
-  padding: 5px;
+  padding: 5px 8px;
   cursor: pointer;
   box-shadow: 2px 2px 30px rgba(244, 236, 13, 0.2);
+  border: solid 1px rgba(255, 255, 255, 0.12);
 
   &:hover {
     background-color: $primaryColor;
