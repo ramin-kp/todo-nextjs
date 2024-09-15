@@ -22,3 +22,20 @@ li {
 a {
   text-decoration: none;
 }
+
+input {
+  outline: none;
+  padding: 5px;
+  font-family: "vazir";
+  font-size: 1rem;
+
+  &:focus {
+    border: solid 3px $primaryColor !important;
+  }
+
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}

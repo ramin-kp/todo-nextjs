@@ -4,11 +4,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBarChart,
-  faBars,
-  faHamburger,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 //styles
 import styles from "@/styles/header.module.scss";
@@ -30,15 +26,15 @@ function Header() {
             <Link href="/">درباه‌ما</Link>
           </li>
         </ul>
-        <div>
-          <div className={styles.header__login}>ورود | ثبت نام</div>
-        </div>
+        <Link href="/signup" className={styles.header__login}>
+          ورود | ثبت نام
+        </Link>
       </nav>
       <div className={styles.header__mobile}>
         <FontAwesomeIcon icon={faBars} className={styles.header__bars} />
-        <div>
-          <div className={styles.header__login}>ورود | ثبت نام</div>
-        </div>
+        <Link href="/signup" className={styles.header__login}>
+          ورود | ثبت نام
+        </Link>
       </div>
     </header>
   );

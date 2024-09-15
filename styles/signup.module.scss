@@ -1,0 +1,45 @@
+@import "mixin";
+
+.signup {
+  @include flexBetween(20px);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.signup__form {
+  width: 100%;
+  padding: 10px;
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+.signUp__form__field {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+
+  label {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+  input[name="email"],
+  input[name="username"],
+  input[name="password"] {
+    direction: ltr;
+    text-align: right;
+  }
+}
+
+.signup__img {
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+  @include flexCenter(20px);
+  flex-shrink: 0;
+  img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+  }
+}

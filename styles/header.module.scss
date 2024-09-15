@@ -29,28 +29,29 @@
 .header__logo {
   font-size: 2.2rem;
 }
+
 .header__login {
+  display: inline-block;
   padding: 5px 8px;
   cursor: pointer;
   box-shadow: 2px 2px 30px rgba(244, 236, 13, 0.2);
   border: solid 1px rgba(255, 255, 255, 0.12);
 
   &:hover {
-    background-color: $primaryColor;
-    color: #000;
+    background-color: $primaryColor !important;
+    color: #000 !important;
     box-shadow: 2px 2px 30px rgba(244, 236, 13, 0.4);
   }
-
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
-  transition: all 0.2s ease-in;
-  -webkit-transition: all 0.2s ease-in;
-  -moz-transition: all 0.2s ease-in;
-  -ms-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in !important;
+  -webkit-transition: all 0.2s ease-in !important;
+  -moz-transition: all 0.2s ease-in !important;
+  -ms-transition: all 0.2s ease-in !important;
+  -o-transition: all 0.2s ease-in !important;
 }
 
 .header__mobile {
