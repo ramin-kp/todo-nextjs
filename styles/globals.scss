@@ -1,0 +1,21 @@
+@import "variables";
+@import "fonts";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  color: $textColor;
+  background-color: $bgColor;
+  font-family: "vazir";
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}

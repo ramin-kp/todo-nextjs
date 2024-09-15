@@ -1,0 +1,72 @@
+@import "variables";
+@import "mixin";
+
+.header {
+  background-color: $secondaryColor;
+}
+
+.header__navbar {
+  width: 100vw;
+  padding: 20px 10px;
+  display: none;
+
+  ul {
+    @include flexBetween(30px);
+  }
+
+  a {
+    color: $textColor;
+    &:hover {
+      color: $primaryColor;
+    }
+    transition: color 0.1s ease-in;
+    -webkit-transition: color 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in;
+    -o-transition: color 0.1s ease-in;
+  }
+}
+.header__logo {
+  font-size: 2.2rem;
+}
+.header__login {
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 30px rgba(244, 236, 13, 0.2);
+
+  &:hover {
+    background-color: $primaryColor;
+    color: #000;
+    box-shadow: 2px 2px 30px rgba(244, 236, 13, 0.4);
+  }
+
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+}
+
+.header__mobile {
+  @include flexBetween(30px);
+  padding: 20px 10px;
+  cursor: pointer;
+}
+
+.header__bars {
+  font-size: 2rem;
+}
+
+@media screen and (min-width: "640px") {
+  .header__navbar {
+    @include flexBetween(auto);
+  }
+  .header__mobile {
+    display: none;
+  }
+}

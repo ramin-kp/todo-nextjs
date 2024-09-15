@@ -1,0 +1,12 @@
+@mixin flexBetween($gapWidth) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $gapWidth;
+}
+
+// @mixin flexCenter() {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// }
