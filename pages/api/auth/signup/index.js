@@ -56,17 +56,18 @@ const handler = async (req, res) => {
         password: hashedPassword,
         role: users.length > 0 ? "USER" : "ADMIN",
       });
-      res.status(201).json({ message: "ثبت نام شما با موفقیت انجام شد" });
-
       const generatedToken = generateToken({ email });
-
-      res.setHeader(
-        "Set-Cookie",
-        serialize("Token", generatedToken, {
-          httpOnly: true,
-          maxAge: 24 * 60 * 60,
-        })
-      );
+      res
+        .setHeader(
+          "Set-Cookie",
+          serialize("Token", generatedToken, {
+            httpOnly: true,
+            path: "/",
+            maxAge: 24 * 60 * 60,
+          })
+        )
+        .status(201)
+        .json({ message: "ثبت نام شما با موفقیت انجام شد" });
     } catch (error) {
       console.log("error=>", error);
       return res

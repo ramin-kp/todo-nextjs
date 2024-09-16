@@ -1,8 +1,8 @@
 const { hash } = require("bcryptjs");
-import { sign } from "jsonwebtoken";
+import { sign, verify } from "jsonwebtoken";
 
 const hashPassword = async (password) => {
-  const hashedPassword =await hash(password, 12);
+  const hashedPassword = await hash(password, 12);
   return hashedPassword;
 };
 
@@ -13,4 +13,10 @@ const generateToken = (data) => {
   return generatedToken;
 };
 
-export { hashPassword, generateToken };
+const verifyToken = (token) => {
+  const verifiedToken = verify(token, process.env.privetKey);
+
+  return verifiedToken;
+};
+
+export { hashPassword, generateToken, verifyToken };

@@ -5,8 +5,10 @@ import React, { useState } from "react";
 import styles from "@/styles/signup.module.scss";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 function signUp() {
+  const router = useRouter();
   const [userData, setUserData] = useState({
     lastName: "",
     firstName: "",
@@ -45,8 +47,6 @@ function signUp() {
       body: JSON.stringify(userData),
     });
     const data = await res.json();
-    console.log(res);
-    console.log(data);
 
     if (res.status === 201) {
       toast.success(data.message, {
@@ -66,6 +66,7 @@ function signUp() {
         email: "",
         password: "",
       });
+      router.replace("/");
     } else {
       return toast.error(data.message, {
         position: "top-right",

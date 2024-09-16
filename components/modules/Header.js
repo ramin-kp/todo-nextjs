@@ -10,7 +10,8 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import styles from "@/styles/header.module.scss";
 import Link from "next/link";
 
-function Header() {
+function Header({ data }) {
+  console.log("data",data);
   return (
     <header className={styles.header}>
       <nav className={styles.header__navbar}>
@@ -26,15 +27,27 @@ function Header() {
             <Link href="/">درباه‌ما</Link>
           </li>
         </ul>
-        <Link href="/signup" className={styles.header__login}>
-          ورود | ثبت نام
-        </Link>
+        {data ? (
+          <Link href="/p-admin" className={styles.header__login}>
+            {data.username}
+          </Link>
+        ) : (
+          <Link href="/signup" className={styles.header__login}>
+            ورود | ثبت نام
+          </Link>
+        )}
       </nav>
       <div className={styles.header__mobile}>
         <FontAwesomeIcon icon={faBars} className={styles.header__bars} />
-        <Link href="/signup" className={styles.header__login}>
-          ورود | ثبت نام
-        </Link>
+        {data ? (
+          <Link href="/p-admin" className={styles.header__login}>
+            {data.username}
+          </Link>
+        ) : (
+          <Link href="/signup" className={styles.header__login}>
+            ورود | ثبت نام
+          </Link>
+        )}
       </div>
     </header>
   );
