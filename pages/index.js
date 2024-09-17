@@ -6,14 +6,13 @@ import usersModel from "@/models/user";
 import connectToDB from "@/config/db";
 
 function index({ data }) {
-  console.log(data);
   return (
     <main className={styles.home}>
       {data ? (
         <>
           <h1 className={styles.home__title}>
             سلام {data.firstName} {data.lastName} عزیز به <span>Next Todo</span>{" "}
-            .خوش آمدید
+            خوش آمدید.
           </h1>
           <h2>برای استفاده از امکانات سایت وارد داشبورد خود شوید</h2>
 
@@ -47,9 +46,16 @@ export async function getServerSideProps(context) {
 
   connectToDB();
 
-  const { email } = verifyToken(Token);
+  const verifiedToken = verifyToken(Token);
 
-  const userData = await usersModel.findOne({ email }, "-__v -password");
+  if (!verifiedToken) {
+    return { props: { data: null } };
+  }
+
+  const userData = await usersModel.findOne(
+    { email: verifiedToken.email },
+    "-__v -password"
+  );
 
   return {
     props: { data: JSON.parse(JSON.stringify(userData)) },

@@ -1,3 +1,4 @@
+@import "variables";
 @import "mixin";
 
 .signup {
@@ -42,4 +43,28 @@
     height: 100%;
     object-fit: contain;
   }
+}
+
+.signUP__submit__button {
+  width: 100%;
+  margin-top: 20px;
+  background-color: $primaryColor;
+  cursor: pointer;
+  &:hover {
+    background: $primaryHoverColor;
+    color: #fff;
+  }
+  transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  -moz-transition: all 0.1s ease-in;
+  -ms-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  padding: 5px;
+  font-family: "vazir";
+  font-size: 1rem;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
 }

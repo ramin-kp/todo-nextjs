@@ -19,7 +19,6 @@ export default function App({ Component, pageProps }) {
 
 export async function getServerSideProps(context) {
   const { Token } = context.req.cookies;
-  console.log("token", Token);
 
   if (!Token) {
     return {
@@ -29,12 +28,16 @@ export async function getServerSideProps(context) {
 
   connectToDB();
 
-  const { email } = verifyToken(Token);
+  const verifiedToken = verifyToken(Token);
 
-  const userData = await usersModel.findOne({ email }, "-__v -password");
-  console.log("userDAta", userData);
-  console.log("email", email);
-  console.log("token", Token);
+  if (!verifiedToken) {
+    return { props: { data: null } };
+  }
+
+  const userData = await usersModel.findOne(
+    { email: verifiedToken.email },
+    "-__v -password"
+  );
 
   return {
     props: { data: JSON.parse(JSON.stringify(userData)) },

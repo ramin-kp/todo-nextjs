@@ -11,7 +11,6 @@ import styles from "@/styles/header.module.scss";
 import Link from "next/link";
 
 function Header({ data }) {
-  console.log("data",data);
   return (
     <header className={styles.header}>
       <nav className={styles.header__navbar}>
@@ -21,14 +20,14 @@ function Header({ data }) {
             <Link href="/">خانه</Link>
           </li>
           <li>
-            <Link href="/">داشبورد</Link>
+            <Link href="/u-panel">داشبورد</Link>
           </li>
           <li>
             <Link href="/">درباه‌ما</Link>
           </li>
         </ul>
         {data ? (
-          <Link href="/p-admin" className={styles.header__login}>
+          <Link href="/u-panel" className={styles.header__login}>
             {data.username}
           </Link>
         ) : (
@@ -40,7 +39,7 @@ function Header({ data }) {
       <div className={styles.header__mobile}>
         <FontAwesomeIcon icon={faBars} className={styles.header__bars} />
         {data ? (
-          <Link href="/p-admin" className={styles.header__login}>
+          <Link href="/u-panel" className={styles.header__login}>
             {data.username}
           </Link>
         ) : (

@@ -44,8 +44,6 @@ const handler = async (req, res) => {
 
       const users = await usersModel.find({});
 
-      console.log("users =>", users);
-
       const hashedPassword = await hashPassword(password);
 
       await usersModel.create({
