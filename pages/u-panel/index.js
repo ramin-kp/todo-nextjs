@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import UpdatedTodoModal from "@/components/templates/todo/UpdatedTodoModal";
+import { toast } from "react-toastify";
 
 //styles
-
 import styles from "@/styles/todos.module.scss";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function UserPanel({ data }) {
   const [todos, setTodos] = useState(data);
+  const [isShowModal, setIsShowModal] = useState(false);
+  const [todoID, setTodoID] = useState("");
   //Fn
   const isCompleteHandler = async (id, completeModify) => {
     const res = await fetch(`/api/todos/${id}`, {
@@ -35,6 +37,32 @@ function UserPanel({ data }) {
     }
     console.log("res =>", res);
     console.log("data =>", data);
+  };
+
+  const deleteTodoHandler = async (id) => {
+    const res = await fetch(`/api/todos/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    const data = await res.json();
+
+    if (res.status === 200) {
+      toast.success(data.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      const res = await fetch("/api/todos");
+      const newData = await res.json();
+      setTodos(newData);
+    }
   };
 
   console.log(todos);
@@ -74,15 +102,30 @@ function UserPanel({ data }) {
                     ? styles.todos__updated__button__disable
                     : styles.todos__updated__button
                 }
-                onClick={() => console.log("ramin")}
+                onClick={() => {
+                  setIsShowModal(true);
+                  setTodoID(todo._id);
+                }}
               >
                 ویرایش
               </button>
-              <button className={styles.todos__remove__button}>حذف</button>
+              <button
+                className={styles.todos__remove__button}
+                onClick={() => deleteTodoHandler(todo._id)}
+              >
+                حذف
+              </button>
             </div>
           </div>
         ))}
       </div>
+      {isShowModal && (
+        <UpdatedTodoModal
+          setIsShowModal={setIsShowModal}
+          todoID={todoID}
+          setTodos={setTodos}
+        />
+      )}
     </main>
   );
 }

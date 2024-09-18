@@ -3,15 +3,17 @@
 
 .header {
   background-color: $secondaryColor;
+  width: 100vw !important;
+  padding: 0 20px;
+  overflow: hidden;
 }
 
 .header__navbar {
-  width: 100vw;
   padding: 20px 10px;
   display: none;
 
   ul {
-    @include flexBetween(30px);
+    @include flexBetween(20px);
   }
 
   a {
@@ -27,7 +29,7 @@
   }
 }
 .header__logo {
-  font-size: 2.2rem;
+  font-size: 2rem;
 }
 
 .header__login {
@@ -66,9 +68,12 @@
 
 @media screen and (min-width: "640px") {
   .header__navbar {
-    @include flexBetween(auto);
+    @include flexBetween(2px);
   }
   .header__mobile {
+    display: none;
+  }
+  .header__bars {
     display: none;
   }
 }
