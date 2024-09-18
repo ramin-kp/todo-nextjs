@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 //styles
 import styles from "@/styles/todos.module.scss";
 import "react-toastify/dist/ReactToastify.css";
+import { verifyToken } from "@/utils/auth";
 
 function UserPanel({ data }) {
   const [todos, setTodos] = useState(data);
@@ -218,6 +219,17 @@ function UserPanel({ data }) {
   );
 }
 export async function getServerSideProps(context) {
+  
+  const { Token } = context.req.cookies;
+  if (!Token) {
+    return { redirect: { destination: "/signin" } };
+  }
+  const verifiedToken = verifyToken(Token)
+  if (!verifiedToken) {
+    return { redirect: { destination: "/signin" } };
+  }
+
+
   const res = await fetch("http://localhost:3000/api/todos", {
     method: "GET",
     credentials: "include",
