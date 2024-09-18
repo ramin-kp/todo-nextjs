@@ -3,8 +3,30 @@
 
 .todos {
   @include flexCenter(20px);
+  flex-direction: column;
 }
 
+.todo__form {
+  margin: 20px 0;
+  @include flexCenter(5px);
+  button {
+    padding: 8px;
+    font-family: "vazir";
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    cursor: pointer;
+    background-color: $primaryColor;
+    &:hover {
+      background-color: $primaryHoverColor;
+    }
+  }
+}
 .todos__item {
   background-color: $secondaryColor;
   @include flexBetween(20px);

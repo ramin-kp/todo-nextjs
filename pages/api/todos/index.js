@@ -7,17 +7,13 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       connectToDB();
-      const { title, body, priority, isComplete } = req.body;
+      const { title, body } = req.body;
       if (
         !title.trim() ||
         title.length < 3 ||
         title.length > 25 ||
         !body.trim() ||
-        body.length < 3 ||
-        body.length > 25 ||
-        !priority.trim() ||
-        !priority.length ||
-        !typeof isComplete === Boolean
+        body.length < 3
       ) {
         return res
           .status(422)
@@ -42,8 +38,8 @@ export default async function handler(req, res) {
       await todosModel.create({
         title,
         body,
-        priority,
-        isComplete,
+        priority: "low",
+        isComplete: false,
         user: userData._id,
       });
 
