@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       connectToDB();
-      const { title, body, date, priority, isComplete } = req.body;
+      const { title, body, priority, isComplete } = req.body;
       if (
         !title.trim() ||
         title.length < 3 ||
@@ -15,8 +15,6 @@ export default async function handler(req, res) {
         !body.trim() ||
         body.length < 3 ||
         body.length > 25 ||
-        !date.trim() ||
-        !date.length ||
         !priority.trim() ||
         !priority.length ||
         !typeof isComplete === Boolean
@@ -44,7 +42,6 @@ export default async function handler(req, res) {
       await todosModel.create({
         title,
         body,
-        date,
         priority,
         isComplete,
         user: userData._id,
@@ -62,7 +59,9 @@ export default async function handler(req, res) {
     try {
       connectToDB();
       const { Token } = req.cookies;
+      console.log("Token =>", req.cookies);
       const verifiedToken = verifyToken(Token);
+      console.log("verifyToken", verifiedToken);
       if (!Token && !verifiedToken) {
         return res
           .status(401)
@@ -76,7 +75,10 @@ export default async function handler(req, res) {
           .json({ message: "کاربری با این ایمیل  یافت نشد" });
       }
 
-      const userTodos = await todosModel.find({ user: userData._id });
+      const userTodos = await todosModel.find(
+        { user: userData._id },
+        "-__v -user"
+      );
       return res.status(200).json({ data: userTodos });
     } catch (error) {
       return res

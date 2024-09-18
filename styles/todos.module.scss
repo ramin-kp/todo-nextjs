@@ -1,0 +1,102 @@
+@import "variables";
+@import "mixin";
+
+.todos {
+  @include flexCenter(20px);
+}
+
+.todos__item {
+  background-color: $secondaryColor;
+  @include flexBetween(20px);
+  flex-direction: column;
+  width: 300px;
+  margin: 20px 0;
+  padding: 20px;
+
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.todos__item__complete {
+  @include flexBetween(20px);
+  background-color: $secondaryColor;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px 0;
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.2) !important;
+
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+.todos__title {
+  @include flexBetween(20px);
+  width: 100%;
+}
+
+.todos__buttons {
+  @include flexBetween(20px);
+
+  button {
+    padding: 8px;
+    font-family: "vazir";
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+.todos__complete__button {
+  background-color: #3b3be6;
+  &:hover {
+    background-color: #0707af;
+  }
+}
+.todos__complete__button__completed {
+  background-color: #008000;
+  &:hover {
+    background-color: #026502;
+  }
+}
+.todos__updated__button {
+  background-color: $primaryColor;
+  &:hover {
+    background-color: $primaryHoverColor;
+  }
+}
+.todos__updated__button__disable {
+  background-color: #bbc064;
+  cursor: default !important;
+}
+
+.todos__remove__button {
+  background-color: #f44040;
+  &:hover {
+    background-color: #b50404;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .todos__item,
+  .todos__item__complete {
+    width: 480px;
+  }
+}
+@media screen and (min-width: 400) {
+  .todos__item,
+  .todos__item__complete {
+    width: 400px;
+  }
+}
